@@ -1,0 +1,44 @@
+name: Deploy Schola Page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "VITE_API_BASE_URL=https://api.edumatrix.xyz/api/v1" > .env
+          echo "VITE_APP_URL=edumatrix.xyz" >> .env
+          docker build -t schola-page:latest -f Dockerfile .
+          docker save -o schola-page-prod.tar schola-page:latest
+          sudo chmod 666 schola-page-prod.tar
+
+      - name: Transfer Files to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "schola-page-prod.tar,docker-compose.yml,deploy.sh"
+          target: "/home/edumatrixapi/htdocs/schola-page"
+
+      - name: Load and Run on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            chmod +x /home/edumatrixapi/htdocs/schola-page/deploy.sh
+            /home/edumatrixapi/htdocs/schola-page/deploy.sh "/home/edumatrixapi/htdocs/schola-page" "schola-page" "schola-page:latest" "schola-page-prod.tar"
