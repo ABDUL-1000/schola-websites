@@ -9,23 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as PagesRouteRouteImport } from './routes/_pages/route'
+import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as PagesIndexRouteImport } from './routes/_pages/index'
-import { Route as PagesSolutionsRouteImport } from './routes/_pages/solutions'
-import { Route as PagesLegalRouteImport } from './routes/_pages/legal'
-import { Route as PagesFeaturesRouteImport } from './routes/_pages/features'
-import { Route as PagesFaqRouteImport } from './routes/_pages/faq'
-import { Route as PagesContactRouteImport } from './routes/_pages/contact'
 import { Route as PagesAboutRouteImport } from './routes/_pages/about'
+import { Route as PagesContactRouteImport } from './routes/_pages/contact'
+import { Route as PagesFaqRouteImport } from './routes/_pages/faq'
+import { Route as PagesFeaturesRouteImport } from './routes/_pages/features'
+import { Route as PagesLegalRouteImport } from './routes/_pages/legal'
+import { Route as PagesSolutionsRouteImport } from './routes/_pages/solutions'
 
+const PagesRouteRoute = PagesRouteRouteImport.update({
+  id: '/_pages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WaitlistRoute = WaitlistRouteImport.update({
   id: '/waitlist',
   path: '/waitlist',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PagesRouteRoute = PagesRouteRouteImport.update({
-  id: '/_pages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PagesIndexRoute = PagesIndexRouteImport.update({
@@ -33,24 +33,9 @@ const PagesIndexRoute = PagesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PagesRouteRoute,
 } as any)
-const PagesSolutionsRoute = PagesSolutionsRouteImport.update({
-  id: '/solutions',
-  path: '/solutions',
-  getParentRoute: () => PagesRouteRoute,
-} as any)
-const PagesLegalRoute = PagesLegalRouteImport.update({
-  id: '/legal',
-  path: '/legal',
-  getParentRoute: () => PagesRouteRoute,
-} as any)
-const PagesFeaturesRoute = PagesFeaturesRouteImport.update({
-  id: '/features',
-  path: '/features',
-  getParentRoute: () => PagesRouteRoute,
-} as any)
-const PagesFaqRoute = PagesFaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
+const PagesAboutRoute = PagesAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => PagesRouteRoute,
 } as any)
 const PagesContactRoute = PagesContactRouteImport.update({
@@ -58,9 +43,24 @@ const PagesContactRoute = PagesContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => PagesRouteRoute,
 } as any)
-const PagesAboutRoute = PagesAboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const PagesFaqRoute = PagesFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => PagesRouteRoute,
+} as any)
+const PagesFeaturesRoute = PagesFeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => PagesRouteRoute,
+} as any)
+const PagesLegalRoute = PagesLegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
+  getParentRoute: () => PagesRouteRoute,
+} as any)
+const PagesSolutionsRoute = PagesSolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
   getParentRoute: () => PagesRouteRoute,
 } as any)
 
@@ -137,18 +137,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/waitlist': {
-      id: '/waitlist'
-      path: '/waitlist'
-      fullPath: '/waitlist'
-      preLoaderRoute: typeof WaitlistRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_pages': {
       id: '/_pages'
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof PagesRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/waitlist': {
+      id: '/waitlist'
+      path: '/waitlist'
+      fullPath: '/waitlist'
+      preLoaderRoute: typeof WaitlistRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_pages/': {
@@ -158,32 +158,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesIndexRouteImport
       parentRoute: typeof PagesRouteRoute
     }
-    '/_pages/solutions': {
-      id: '/_pages/solutions'
-      path: '/solutions'
-      fullPath: '/solutions'
-      preLoaderRoute: typeof PagesSolutionsRouteImport
-      parentRoute: typeof PagesRouteRoute
-    }
-    '/_pages/legal': {
-      id: '/_pages/legal'
-      path: '/legal'
-      fullPath: '/legal'
-      preLoaderRoute: typeof PagesLegalRouteImport
-      parentRoute: typeof PagesRouteRoute
-    }
-    '/_pages/features': {
-      id: '/_pages/features'
-      path: '/features'
-      fullPath: '/features'
-      preLoaderRoute: typeof PagesFeaturesRouteImport
-      parentRoute: typeof PagesRouteRoute
-    }
-    '/_pages/faq': {
-      id: '/_pages/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof PagesFaqRouteImport
+    '/_pages/about': {
+      id: '/_pages/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PagesAboutRouteImport
       parentRoute: typeof PagesRouteRoute
     }
     '/_pages/contact': {
@@ -193,11 +172,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesContactRouteImport
       parentRoute: typeof PagesRouteRoute
     }
-    '/_pages/about': {
-      id: '/_pages/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof PagesAboutRouteImport
+    '/_pages/faq': {
+      id: '/_pages/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof PagesFaqRouteImport
+      parentRoute: typeof PagesRouteRoute
+    }
+    '/_pages/features': {
+      id: '/_pages/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof PagesFeaturesRouteImport
+      parentRoute: typeof PagesRouteRoute
+    }
+    '/_pages/legal': {
+      id: '/_pages/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof PagesLegalRouteImport
+      parentRoute: typeof PagesRouteRoute
+    }
+    '/_pages/solutions': {
+      id: '/_pages/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof PagesSolutionsRouteImport
       parentRoute: typeof PagesRouteRoute
     }
   }
