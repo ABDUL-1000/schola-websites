@@ -6,16 +6,16 @@ const FAQS = [
     a: 'Absolutely. All data is encrypted at rest and in transit. We follow industry-standard security practices to keep your institution&apos;s information safe.',
   },
   {
-    q: 'How do I register my school?',
-    a: 'Join our waitlist by entering your email above. Once we launch, you&apos;ll receive an invitation to set up your school profile in minutes.',
+    q: 'How do I get started with Schola?',
+    a: 'Book a free 15-minute live demo on our website. Our solutions team will walk you through raw score entry, broadsheet compilation, and custom branded report cards tailored to your school.',
   },
   {
     q: 'Can Schola handle multiple branches?',
-    a: 'Yes! Multi-branch support is on our roadmap (Phase 4). You&apos;ll be able to manage all branches from a single admin dashboard.',
+    a: 'Yes! Multi-branch support is natively built in. You can manage multiple campuses from a single centralized administrator dashboard.',
   },
   {
-    q: 'Is there a free plan?',
-    a: 'We&apos;re finalizing pricing. Early waitlist members will receive an exclusive discount and extended free trial upon launch.',
+    q: 'How much does Schola cost?',
+    a: 'Schola offers transparent termly pricing starting at ₦1,000 per active student per term, with automatic volume discounts for larger schools. You can slide your student population on our calculator to see your exact rate.',
   },
   {
     q: 'What devices does Schola support?',

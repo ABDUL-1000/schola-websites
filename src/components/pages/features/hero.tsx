@@ -44,14 +44,27 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             size="xl"
-            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto"
+            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto cursor-pointer"
             asChild
           >
             <Link
-              to="/waitlist"
+              to="/book-demo"
               className="flex items-center justify-center gap-2"
             >
-              Join Waitlist <ArrowRight className="size-4" />
+              Book a Live Demo <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+          <Button
+            size="xl"
+            variant="outline"
+            className="w-full sm:w-auto cursor-pointer"
+            asChild
+          >
+            <Link
+              to="/product-tour"
+              className="flex items-center justify-center gap-2"
+            >
+              Explore Product Tour
             </Link>
           </Button>
         </div>

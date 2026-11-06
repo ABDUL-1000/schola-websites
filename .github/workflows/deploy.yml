@@ -29,8 +29,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "schola-page-prod.tar,docker-compose.yml,deploy.sh"
-          target: "/home/edumatrixapi/htdocs/schola-page"
+          source: 'schola-page-prod.tar,docker-compose.yml,deploy.sh'
+          target: '/home/edumatrixapi/htdocs/schola-page'
 
       - name: Load and Run on VPS
         uses: appleboy/ssh-action@v1.0.3

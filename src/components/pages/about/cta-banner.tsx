@@ -17,14 +17,14 @@ export function CtaBanner() {
         <div className="flex justify-center mt-8">
           <Button
             size="xl"
-            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto"
+            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto cursor-pointer"
             asChild
           >
             <Link
-              to="/waitlist"
+              to="/book-demo"
               className="flex items-center justify-center gap-2"
             >
-              Join the Waitlist <ArrowRight className="size-5" />
+              Book a Live Demo <ArrowRight className="size-5" />
             </Link>
           </Button>
         </div>

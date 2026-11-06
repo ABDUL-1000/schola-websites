@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Hero } from '@/components/pages/landing/hero'
-import { Features } from '@/components/pages/landing/features'
-import { HowItWorks } from '@/components/pages/landing/how-it-works'
-import { Stakeholders } from '@/components/pages/landing/stakeholders'
-import { Roadmap } from '@/components/pages/landing/roadmap'
+import { SetupTimeline } from '@/components/pages/landing/setup-timeline'
+import { FeatureShowcase } from '@/components/pages/landing/feature-showcase'
+import { RoleTeaser, RoadmapStrip } from '@/components/pages/landing/role-teaser'
+import { ComparisonMatrix } from '@/components/pages/landing/comparison-matrix'
+import { TermFeeCalculator } from '@/components/pages/landing/term-fee-calculator'
 import { FAQ } from '@/components/pages/landing/faq'
 import { CtaBanner } from '@/components/pages/landing/cta-banner'
 import { useWaitlistCount } from '@/hooks/use-tally'
@@ -14,24 +15,27 @@ export const Route = createFileRoute('/_pages/')({
   head: () => ({
     meta: [
       {
-        title: 'Schola - The Future of School Management System',
+        title:
+          'Schola - Effortless Grading, Broadsheets & Report Cards for Schools',
       },
       {
         name: 'description',
-        content: 'Schola - The Future of School Management System',
+        content:
+          'Eliminate midnight spreadsheet errors and manual broadsheet calculations. Teachers enter scores in minutes; Schola calculates totals, class positions, and generates beautiful branded report cards instantly.',
       },
       {
         name: 'keywords',
         content:
-          'Schola, Education, Future, Learning, School Management System, Education SaaS',
+          'Schola, School Management System, School Report Card Generator, Broadsheet Calculator, Nigerian School Software, Score Sheet Automation',
       },
       {
         property: 'og:title',
-        content: 'Schola - The Future of School Management System',
+        content: 'Schola - Effortless Grading, Broadsheets & Report Cards',
       },
       {
         property: 'og:description',
-        content: 'Schola - The Future of School Management System',
+        content:
+          'Eliminate midnight spreadsheet errors and manual broadsheet calculations. Enter marks in minutes and generate branded report cards instantly.',
       },
       {
         property: 'og:type',
@@ -51,11 +55,12 @@ export const Route = createFileRoute('/_pages/')({
       },
       {
         name: 'twitter:title',
-        content: 'Schola - The Future of School Management System',
+        content: 'Schola - Effortless Grading & Instant Report Cards',
       },
       {
         name: 'twitter:description',
-        content: 'Schola - The Future of School Management System',
+        content:
+          'Say goodbye to broken Excel formulas and manual broadsheet arithmetic. Generate 1-click branded report cards for your entire school.',
       },
       {
         name: 'twitter:image',
@@ -79,11 +84,11 @@ const jsonLd = {
   operatingSystem: 'Any',
   url: 'https://edumatrix.xyz',
   description:
-    'The Digital Way to Manage Your School. A modern platform to digitize attendance, academics, assessments, results and more.',
+    'School management platform for results and report cards, school fees, exam approval and online admissions, with a dashboard for every role.',
   offers: {
     '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
+    price: '1000',
+    priceCurrency: 'NGN',
   },
 }
 
@@ -105,10 +110,12 @@ function indexPage() {
         waitlistLoading={waitlistLoading}
         waitlistError={waitlistError}
       />
-      <Features />
-      <HowItWorks />
-      <Stakeholders />
-      <Roadmap />
+      <FeatureShowcase />
+      <SetupTimeline />
+      <RoleTeaser />
+      <ComparisonMatrix />
+      <TermFeeCalculator />
+      <RoadmapStrip />
       <FAQ />
       <CtaBanner />
     </>

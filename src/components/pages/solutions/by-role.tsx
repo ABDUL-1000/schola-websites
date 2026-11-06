@@ -263,9 +263,9 @@ const byRoleData = [
 
         <CustomCard className="border-border shadow-sm bg-card hover:shadow-md transition-shadow">
           <div className="flex flex-col sm:flex-row gap-6 items-start">
-            <div className="shrink-0 size-24 sm:size-32 rounded-full overflow-hidden bg-emerald-500/10 flex items-center justify-center">
-              <div className="p-4 bg-emerald-500/20 rounded-full">
-                <BookOpen className="size-12 text-emerald-500" />
+            <div className="shrink-0 size-24 sm:size-32 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center">
+              <div className="p-4 bg-primary/20 rounded-full">
+                <BookOpen className="size-12 text-primary" />
               </div>
             </div>
             <div className="flex-1 space-y-3">

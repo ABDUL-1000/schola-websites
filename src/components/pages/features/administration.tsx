@@ -25,9 +25,9 @@ const FEATURES = [
     badge: 'Admin',
   },
   {
-    title: 'Inventory Control',
+    title: 'Online Admissions',
     description:
-      'Manage assets, track library books, and oversee supplies across multiple campuses.',
+      'Share your enrolment and staff registration links. Applications arrive complete in a review queue; approving emails login details.',
     icon: Boxes,
     badge: 'Admin',
   },

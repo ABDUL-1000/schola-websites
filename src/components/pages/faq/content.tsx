@@ -12,12 +12,12 @@ const FAQ_CATEGORIES = [
     iconBg: 'bg-blue-500/10',
     questions: [
       {
-        q: 'How do I sign up for early access?',
-        a: "Join our waitlist by clicking the 'Join Waitlist' button on our website. We are progressively rolling out invites to schools based on region and readiness.",
+        q: 'How do I schedule a demo for my school?',
+        a: "You can schedule a live 15-minute demo directly by clicking 'Book a Demo' on our website. Choose your preferred date, time slot, and the specific modules you'd like to test.",
       },
       {
-        q: 'Is there a demo available for schools?',
-        a: 'We provide personalized guided demos to school leadership once you are invited from the waitlist.',
+        q: 'Is there a live test available for schools?',
+        a: 'Yes! We can set up a live 15-minute test in your school computer lab using your actual subjects and grading scale with zero upfront commitment.',
       },
       {
         q: 'What are the system requirements?',

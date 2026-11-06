@@ -1,23 +1,39 @@
-import { Database, Settings, Zap } from 'lucide-react'
+import { UploadCloud, Edit3, Cpu, Printer, ArrowRight } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
+import { Button } from '@/components/ui/button'
 
 const STEPS = [
   {
-    icon: Database,
-    title: 'Enter Data',
+    stepNumber: '01',
+    icon: UploadCloud,
+    title: 'Set up once in an afternoon',
     description:
-      'Onboard your school by adding classes, students, and staff into the system.',
+      'Bulk-import your classes, subjects, teachers, and students using our validated Excel templates. Schola cleans duplicates and sets up your entire term structure in minutes.',
+    badge: '1-Click Import',
   },
   {
-    icon: Settings,
-    title: 'Go Digital',
+    stepNumber: '02',
+    icon: Edit3,
+    title: 'Streamlined score entry',
     description:
-      'Set up digital grading, timetables, and reporting to replace manual paperwork.',
+      'Teachers open their subject score sheet and type in raw continuous assessment (CA 1, CA 2) and exam marks. Built-in auto-save prevents lost marks even during internet hiccups.',
+    badge: 'Auto-Saving',
   },
   {
-    icon: Zap,
-    title: 'Run Freely',
+    stepNumber: '03',
+    icon: Cpu,
+    title: 'Automated broadsheet computation',
     description:
-      'Focus on what matters — Schola replaces the paper trail so you can run your school effortlessly.',
+      'Our mathematical engine aggregates all subjects across the class. In seconds, it computes weighted averages, assigns official letter grades (A1 - F9), and determines class position rankings.',
+    badge: 'Zero Math Errors',
+  },
+  {
+    stepNumber: '04',
+    icon: Printer,
+    title: 'Branded report cards in one click',
+    description:
+      'School administrators review the completed broadsheet, lock the results, and generate high-resolution, watermarked PDF report cards customized with your school crest and motto.',
+    badge: 'Print & Digital Ready',
   },
 ]
 
@@ -25,44 +41,78 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-16 md:py-24 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden bg-background"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] [radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20" />
-
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs font-bold tracking-widest uppercase text-primary mb-3">
-            How It Works
+            Streamlined 4-Step Process
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-            How Schola Works
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+            How Schola Transforms Your Termly Grading
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-lg">
-            A simple, three-step process to digitize and run your school from
-            anywhere.
+          <p className="mt-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            From raw marks in a teacher&apos;s notebook to finished, branded
+            report cards in the hands of parents—without the midnight headache.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-          {/* Connector line (desktop only) */}
-          <div className="hidden md:block absolute top-10 left-[16.6%] right-[16.6%] h-0.5 bg-linear-to-r from-transparent via-primary/20 to-transparent border-t border-dashed border-border" />
+        {/* 4 Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {STEPS.map((step, i) => {
+            const Icon = step.icon
+            return (
+              <div
+                key={step.title}
+                className="relative bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-primary/40 transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Step Top row */}
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                      Step {step.stepNumber}
+                    </span>
+                    <span className="text-[11px] font-medium text-muted-foreground">
+                      {step.badge}
+                    </span>
+                  </div>
 
-          {STEPS.map((step, i) => (
-            <div key={step.title} className="relative text-center group">
-              <div className="relative z-10 mx-auto mb-6 inline-flex items-center justify-center size-20 rounded-2xl bg-card text-primary border border-border shadow-xl shadow-primary/5 group-hover:scale-110 transition-transform duration-300">
-                <step.icon className="size-8" />
-                <div className="absolute -top-2 -right-2 size-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center border-2 border-background">
-                  {i + 1}
+                  {/* Icon */}
+                  <div className="mb-5 inline-flex items-center justify-center size-12 rounded-xl bg-primary/10 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <Icon className="size-6" />
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 className="text-base font-bold text-foreground mb-2 leading-snug">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-border/60 flex items-center gap-1.5 text-xs font-semibold text-primary">
+                  <span>Explore step</span>
+                  <ArrowRight className="size-3 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">
-                {step.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-                {step.description}
-              </p>
-            </div>
-          ))}
+            )
+          })}
+        </div>
+
+        {/* Bottom Callout */}
+        <div className="mt-12 text-center">
+          <Button
+            size="lg"
+            asChild
+            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 font-semibold cursor-pointer"
+          >
+            <Link to="/book-demo" className="flex items-center gap-2">
+              See the 4 Steps Live in a 15-Minute Demo{' '}
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

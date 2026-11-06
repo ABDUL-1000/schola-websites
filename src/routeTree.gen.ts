@@ -13,10 +13,12 @@ import { Route as PagesRouteRouteImport } from './routes/_pages/route'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as PagesIndexRouteImport } from './routes/_pages/index'
 import { Route as PagesAboutRouteImport } from './routes/_pages/about'
+import { Route as PagesBookDemoRouteImport } from './routes/_pages/book-demo'
 import { Route as PagesContactRouteImport } from './routes/_pages/contact'
 import { Route as PagesFaqRouteImport } from './routes/_pages/faq'
 import { Route as PagesFeaturesRouteImport } from './routes/_pages/features'
 import { Route as PagesLegalRouteImport } from './routes/_pages/legal'
+import { Route as PagesProductTourRouteImport } from './routes/_pages/product-tour'
 import { Route as PagesSolutionsRouteImport } from './routes/_pages/solutions'
 
 const PagesRouteRoute = PagesRouteRouteImport.update({
@@ -36,6 +38,11 @@ const PagesIndexRoute = PagesIndexRouteImport.update({
 const PagesAboutRoute = PagesAboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => PagesRouteRoute,
+} as any)
+const PagesBookDemoRoute = PagesBookDemoRouteImport.update({
+  id: '/book-demo',
+  path: '/book-demo',
   getParentRoute: () => PagesRouteRoute,
 } as any)
 const PagesContactRoute = PagesContactRouteImport.update({
@@ -58,6 +65,11 @@ const PagesLegalRoute = PagesLegalRouteImport.update({
   path: '/legal',
   getParentRoute: () => PagesRouteRoute,
 } as any)
+const PagesProductTourRoute = PagesProductTourRouteImport.update({
+  id: '/product-tour',
+  path: '/product-tour',
+  getParentRoute: () => PagesRouteRoute,
+} as any)
 const PagesSolutionsRoute = PagesSolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -68,19 +80,23 @@ export interface FileRoutesByFullPath {
   '/': typeof PagesIndexRoute
   '/waitlist': typeof WaitlistRoute
   '/about': typeof PagesAboutRoute
+  '/book-demo': typeof PagesBookDemoRoute
   '/contact': typeof PagesContactRoute
   '/faq': typeof PagesFaqRoute
   '/features': typeof PagesFeaturesRoute
   '/legal': typeof PagesLegalRoute
+  '/product-tour': typeof PagesProductTourRoute
   '/solutions': typeof PagesSolutionsRoute
 }
 export interface FileRoutesByTo {
   '/waitlist': typeof WaitlistRoute
   '/about': typeof PagesAboutRoute
+  '/book-demo': typeof PagesBookDemoRoute
   '/contact': typeof PagesContactRoute
   '/faq': typeof PagesFaqRoute
   '/features': typeof PagesFeaturesRoute
   '/legal': typeof PagesLegalRoute
+  '/product-tour': typeof PagesProductTourRoute
   '/solutions': typeof PagesSolutionsRoute
   '/': typeof PagesIndexRoute
 }
@@ -89,10 +105,12 @@ export interface FileRoutesById {
   '/_pages': typeof PagesRouteRouteWithChildren
   '/waitlist': typeof WaitlistRoute
   '/_pages/about': typeof PagesAboutRoute
+  '/_pages/book-demo': typeof PagesBookDemoRoute
   '/_pages/contact': typeof PagesContactRoute
   '/_pages/faq': typeof PagesFaqRoute
   '/_pages/features': typeof PagesFeaturesRoute
   '/_pages/legal': typeof PagesLegalRoute
+  '/_pages/product-tour': typeof PagesProductTourRoute
   '/_pages/solutions': typeof PagesSolutionsRoute
   '/_pages/': typeof PagesIndexRoute
 }
@@ -102,19 +120,23 @@ export interface FileRouteTypes {
     | '/'
     | '/waitlist'
     | '/about'
+    | '/book-demo'
     | '/contact'
     | '/faq'
     | '/features'
     | '/legal'
+    | '/product-tour'
     | '/solutions'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/waitlist'
     | '/about'
+    | '/book-demo'
     | '/contact'
     | '/faq'
     | '/features'
     | '/legal'
+    | '/product-tour'
     | '/solutions'
     | '/'
   id:
@@ -122,10 +144,12 @@ export interface FileRouteTypes {
     | '/_pages'
     | '/waitlist'
     | '/_pages/about'
+    | '/_pages/book-demo'
     | '/_pages/contact'
     | '/_pages/faq'
     | '/_pages/features'
     | '/_pages/legal'
+    | '/_pages/product-tour'
     | '/_pages/solutions'
     | '/_pages/'
   fileRoutesById: FileRoutesById
@@ -165,6 +189,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesAboutRouteImport
       parentRoute: typeof PagesRouteRoute
     }
+    '/_pages/book-demo': {
+      id: '/_pages/book-demo'
+      path: '/book-demo'
+      fullPath: '/book-demo'
+      preLoaderRoute: typeof PagesBookDemoRouteImport
+      parentRoute: typeof PagesRouteRoute
+    }
     '/_pages/contact': {
       id: '/_pages/contact'
       path: '/contact'
@@ -193,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PagesLegalRouteImport
       parentRoute: typeof PagesRouteRoute
     }
+    '/_pages/product-tour': {
+      id: '/_pages/product-tour'
+      path: '/product-tour'
+      fullPath: '/product-tour'
+      preLoaderRoute: typeof PagesProductTourRouteImport
+      parentRoute: typeof PagesRouteRoute
+    }
     '/_pages/solutions': {
       id: '/_pages/solutions'
       path: '/solutions'
@@ -205,20 +243,24 @@ declare module '@tanstack/react-router' {
 
 interface PagesRouteRouteChildren {
   PagesAboutRoute: typeof PagesAboutRoute
+  PagesBookDemoRoute: typeof PagesBookDemoRoute
   PagesContactRoute: typeof PagesContactRoute
   PagesFaqRoute: typeof PagesFaqRoute
   PagesFeaturesRoute: typeof PagesFeaturesRoute
   PagesLegalRoute: typeof PagesLegalRoute
+  PagesProductTourRoute: typeof PagesProductTourRoute
   PagesSolutionsRoute: typeof PagesSolutionsRoute
   PagesIndexRoute: typeof PagesIndexRoute
 }
 
 const PagesRouteRouteChildren: PagesRouteRouteChildren = {
   PagesAboutRoute: PagesAboutRoute,
+  PagesBookDemoRoute: PagesBookDemoRoute,
   PagesContactRoute: PagesContactRoute,
   PagesFaqRoute: PagesFaqRoute,
   PagesFeaturesRoute: PagesFeaturesRoute,
   PagesLegalRoute: PagesLegalRoute,
+  PagesProductTourRoute: PagesProductTourRoute,
   PagesSolutionsRoute: PagesSolutionsRoute,
   PagesIndexRoute: PagesIndexRoute,
 }

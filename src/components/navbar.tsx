@@ -101,11 +101,11 @@ export function Navbar() {
               <ModeToggle />
               <Button
                 size="default"
-                className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all rounded-full"
+                className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all rounded-full cursor-pointer"
                 asChild
               >
-                <Link to="/waitlist" className="cursor-pointer">
-                  Join Waitlist
+                <Link to="/book-demo" className="cursor-pointer">
+                  Book a Demo
                 </Link>
               </Button>
             </div>
@@ -194,14 +194,14 @@ export function Navbar() {
         <div className="p-6 border-t border-border bg-muted/50">
           <Button
             size="xl"
-            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all w-full"
+            className="shadow-lg shadow-primary/25 hover:shadow-xl active:scale-95 transition-all w-full cursor-pointer"
             asChild
           >
-            <Link to="/waitlist" onClick={() => setMobileMenuOpen(false)}>
-              Join the Waitlist
+            <Link to="/book-demo" onClick={() => setMobileMenuOpen(false)}>
+              Book a Live Demo
             </Link>
           </Button>
-          <p className="mt-4 text-center text-xs text-gray-400">
+          <p className="mt-4 text-center text-xs text-muted-foreground">
             © {new Date().getFullYear()} Schola
           </p>
         </div>

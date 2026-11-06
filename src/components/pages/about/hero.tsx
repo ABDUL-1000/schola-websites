@@ -33,14 +33,14 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="xl"
-                className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto"
+                className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto cursor-pointer"
                 asChild
               >
                 <Link
-                  to="/waitlist"
+                  to="/book-demo"
                   className="flex items-center justify-center gap-2"
                 >
-                  Join our mission <ArrowRight className="size-4" />
+                  Book a Demo <ArrowRight className="size-4" />
                 </Link>
               </Button>
               <Button

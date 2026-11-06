@@ -10,21 +10,21 @@ export function CtaBanner() {
           Ready to transform your school?
         </h2>
         <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-          Join the waitlist today and be among the first to bring modern,
-          efficient, and secure administration to your institution.
+          Book a free 15-minute demo today and see how easy it is to bring modern,
+          effortless grading and report cards to your institution.
         </p>
 
         <div className="flex justify-center flex-col sm:flex-row gap-4">
           <Button
             size="xl"
-            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto"
+            className="shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 transition-all w-full sm:w-auto cursor-pointer"
             asChild
           >
             <Link
-              to="/waitlist"
+              to="/book-demo"
               className="flex items-center justify-center gap-2"
             >
-              Join the Waitlist <ArrowRight className="size-5" />
+              Book a Live Demo <ArrowRight className="size-5" />
             </Link>
           </Button>
           <Button

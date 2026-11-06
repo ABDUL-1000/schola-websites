@@ -15,8 +15,8 @@ const VALUES = [
     title: 'Security',
     description:
       'Bank-grade encryption and privacy-first architecture protecting sensitive student data.',
-    iconTheme: 'text-emerald-500',
-    bgTheme: 'bg-emerald-500/10',
+    iconTheme: 'text-primary',
+    bgTheme: 'bg-primary/10',
   },
   {
     icon: HeartHandshake,

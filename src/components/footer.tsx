@@ -48,6 +48,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
+                  to="/product-tour"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
+                  Product Tour
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/features"
                   className="text-muted-foreground hover:text-primary text-sm transition-colors"
                 >
@@ -60,6 +68,14 @@ export function Footer() {
                   className="text-muted-foreground hover:text-primary text-sm transition-colors"
                 >
                   Solutions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/book-demo"
+                  className="text-primary font-medium hover:underline text-sm transition-colors"
+                >
+                  Book a Demo
                 </Link>
               </li>
               {/*
