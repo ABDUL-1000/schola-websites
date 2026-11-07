@@ -33,7 +33,7 @@ export function CtaBanner() {
             className="w-full sm:w-auto font-bold"
             asChild
           >
-            <a href="mailto:contact@edumatrix.xyz">Contact Sales</a>
+            <a href="mailto:schola.com.ng@gmail.com">Contact Sales</a>
           </Button>
         </div>
       </div>

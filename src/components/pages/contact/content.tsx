@@ -1,7 +1,41 @@
-import { Mail, Clock, MapPin } from 'lucide-react'
+import { useState } from 'react'
+import { Mail, Clock, MapPin, CheckCircle2, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { sendToInbox } from '@/lib/send-to-inbox'
 
 export function Content() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const name = String(data.get('fullName') || '').trim()
+    const email = String(data.get('email') || '').trim()
+    const subject = String(data.get('subject') || 'General Inquiry')
+    const message = String(data.get('message') || '').trim()
+
+    setError('')
+    if (!name) return setError('Please enter your name.')
+    if (!/^\S+@\S+\.\S+$/.test(email)) return setError('Please enter a valid email address.')
+    if (!message) return setError('Please write a message.')
+
+    setStatus('sending')
+    try {
+      await sendToInbox({
+        subject: `${subject} from ${name} (website contact form)`,
+        replyTo: email,
+        fields: { Name: name, Subject: subject, Message: message },
+      })
+      form.reset()
+      setStatus('sent')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      setStatus('idle')
+    }
+  }
+
   return (
     <section className="bg-muted/30 py-12 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -12,7 +46,7 @@ export function Content() {
               Send us a Message
             </h2>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit} noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label
@@ -24,6 +58,7 @@ export function Content() {
                   <input
                     type="text"
                     id="fullName"
+                    name="fullName"
                     placeholder="John Doe"
                     className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium"
                   />
@@ -38,6 +73,7 @@ export function Content() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="john@example.com"
                     className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium"
                   />
@@ -54,6 +90,7 @@ export function Content() {
                 <div className="relative">
                   <select
                     id="subject"
+                    name="subject"
                     className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium cursor-pointer"
                     defaultValue="General Inquiry"
                   >
@@ -83,17 +120,37 @@ export function Content() {
                 </label>
                 <textarea
                   id="message"
+                    name="message"
                   rows={5}
                   placeholder="How can we help you?"
                   className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium resize-none"
                 ></textarea>
               </div>
 
+              {error && (
+                <p role="alert" className="text-sm font-medium text-destructive">
+                  {error}
+                </p>
+              )}
+              {status === 'sent' && (
+                <p role="status" className="flex items-center gap-2 text-sm font-medium text-emerald-600">
+                  <CheckCircle2 className="size-4" /> Thanks! Your message has been sent. We'll reply by email.
+                </p>
+              )}
+
               <Button
+                type="submit"
                 size="lg"
+                disabled={status === 'sending'}
                 className="w-full font-semibold rounded-lg shadow-sm"
               >
-                Send Message
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 className="mr-2 size-4 animate-spin" /> Sending…
+                  </>
+                ) : (
+                  'Send Message'
+                )}
               </Button>
             </form>
           </div>
@@ -118,10 +175,10 @@ export function Content() {
                       Our team is here to help.
                     </p>
                     <a
-                      href="mailto:info@edumatrix.xyz"
+                      href="mailto:schola.com.ng@gmail.com"
                       className="text-sm font-semibold text-blue-500 hover:underline"
                     >
-                      info@edumatrix.xyz
+                      schola.com.ng@gmail.com
                     </a>
                   </div>
                 </div>

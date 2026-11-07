@@ -95,7 +95,7 @@ export function Content() {
                 Our legal team is available to help clarify any points.
               </p>
               <a
-                href="mailto:contact@edumatrix.xyz"
+                href="mailto:schola.com.ng@gmail.com"
                 className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
               >
                 Contact Support <ArrowRight className="size-4" />
@@ -425,7 +425,7 @@ export function Content() {
                           Email Us
                         </span>
                         <span className="text-sm font-bold text-foreground">
-                          contact@edumatrix.xyz
+                          schola.com.ng@gmail.com
                         </span>
                       </div>
                     </div>

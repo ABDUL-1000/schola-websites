@@ -33,7 +33,7 @@ export function Footer() {
                 <Linkedin className="size-5" />
               </a>
               <a
-                href="mailto:info@edumatrix.xyz"
+                href="mailto:schola.com.ng@gmail.com"
                 className="p-2 rounded-full bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                 aria-label="Email"
               >
