@@ -1,8 +1,12 @@
 /**
- * "Book a demo" client. Emails the request straight to Schola's business inbox
- * (see sendToInbox) and sends the school an automatic confirmation. No backend.
+ * "Book a demo" client. Posts to the Schola API (POST /public/demo-requests),
+ * which saves the request (visible in the super admin under "Demo requests"),
+ * emails the Schola team and sends the school a confirmation.
+ *
+ * The API address comes from VITE_API_BASE_URL in the website's .env, e.g.
+ *   VITE_API_BASE_URL=https://api.schola.com.ng/api/v1
  */
-import { sendToInbox } from '@/lib/send-to-inbox'
+import { API_BASE_URL } from '@/constants'
 
 export interface DemoRequestInput {
   fullName: string
@@ -26,43 +30,27 @@ export interface DemoRequestResponse {
   reference: string
 }
 
-const newReference = () =>
-  'DEMO-' +
-  Date.now().toString(36).slice(-4).toUpperCase() +
-  Math.random().toString(36).slice(2, 5).toUpperCase()
+export async function submitDemoRequest(payload: DemoRequestInput): Promise<DemoRequestResponse> {
+  let res: Response
+  try {
+    res = await fetch(`${API_BASE_URL.replace(/\/+$/, '')}/public/demo-requests`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ source: 'book-demo', ...payload }),
+    })
+  } catch {
+    throw new Error(
+      'We could not reach our servers. Check your connection and try again, or email us at schola.com.ng@gmail.com.',
+    )
+  }
 
-export async function submitDemoRequest(p: DemoRequestInput): Promise<DemoRequestResponse> {
-  const reference = newReference()
-  const location = [p.locationCity, p.locationState].filter(Boolean).join(', ')
-
-  await sendToInbox({
-    subject: `Demo request: ${p.schoolName} (${reference})`,
-    replyTo: p.email.trim(),
-    fields: {
-      Reference: reference,
-      'Full name': p.fullName,
-      Role: p.role || '-',
-      School: p.schoolName,
-      Phone: p.phone,
-      Location: location || '-',
-      Students: p.studentPopulation || '-',
-      'Modules of interest': p.modulesOfInterest.join(', ') || '-',
-      'Preferred date': p.preferredDate,
-      'Preferred time': p.preferredTime || '-',
-      Notes: p.notes?.trim() || '-',
-    },
-    autoReply:
-      `Hi ${p.fullName.split(' ')[0] || 'there'},\n\n` +
-      `Thanks for booking a Schola demo for ${p.schoolName}. ` +
-      `We'll contact you on ${p.phone} or by email to confirm a time` +
-      `${p.preferredDate ? ` around ${p.preferredDate}` : ''}.\n\n` +
-      `Your reference is ${reference}. Just reply to this email if you have any questions.\n\n` +
-      `The Schola team`,
-  })
-
+  const json = await res.json().catch(() => null)
+  if (!res.ok || !json?.success) {
+    throw new Error(json?.message || 'We could not submit your request. Please try again.')
+  }
   return {
-    message: "Thanks! We've received your request and will contact you shortly to confirm a time.",
-    id: reference,
-    reference,
+    message: json.message,
+    id: json.data?.id,
+    reference: json.data?.reference,
   }
 }
