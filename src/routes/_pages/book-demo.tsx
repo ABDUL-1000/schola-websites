@@ -14,6 +14,7 @@ import {
   MonitorPlay,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DatePicker, formatDay, toYmd } from '@/components/ui/date-picker'
 import { submitDemoRequest, type DemoRequestResponse } from '@/api/demo'
 import { whatsappLink } from '@/constants'
 
@@ -231,7 +232,7 @@ function BookDemoPage() {
                   <div className="flex justify-between border-b border-border pb-2">
                     <span className="text-muted-foreground">Preferred time</span>
                     <span className="font-medium text-foreground">
-                      {formData.preferredDate} at {formData.preferredTime}
+                      {formatDay(formData.preferredDate)} at {formData.preferredTime}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -481,18 +482,13 @@ function BookDemoPage() {
                       <label className="block text-xs text-muted-foreground mb-1">
                         Preferred Date
                       </label>
-                      <input
-                        type="date"
-                        required
-                        min={new Date().toISOString().split('T')[0]}
+                      <DatePicker
+                        aria-label="Preferred demo date"
+                        // From today (local date — the old UTC version could show yesterday or block today).
+                        min={toYmd(new Date())}
                         value={formData.preferredDate}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            preferredDate: e.target.value,
-                          })
-                        }
-                        className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        onChange={(v) => setFormData({ ...formData, preferredDate: v })}
+                        placeholder="Choose a day"
                       />
                     </div>
 
