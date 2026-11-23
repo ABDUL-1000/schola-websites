@@ -66,8 +66,10 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'See school finance', detail: 'Expected, collected and outstanding fees by class, who has paid, and every payment recorded.' },
       { title: 'Oversee exams', detail: 'Every CBT and written paper, current and past, filterable by session and term — print or download any as PDF.' },
       { title: 'Run HR', detail: 'Approve leave requests and run payroll for staff.' },
+      { title: 'ID cards', detail: 'Design student and staff ID cards (portrait or landscape, four designs, your colours and signature), then print a class at real size or download them as one PDF.' },
+      { title: 'Certificates', detail: 'Graduation certificates, testimonials, MSSN / FCS and other club certificates, and awards in your own wording. Give one to a single student or a whole class, including past students.' },
     ],
-    whereToFind: ['Management → Staff / Students / Enrolment Queue / Staff Queue', 'Academics → Sessions, Classes, Subjects, Assessments Config', 'Assessments → Exams & Tests, Results, Question Bank', 'Finance → School Fees', 'HR & Payroll'],
+    whereToFind: ['Management → Staff / Students / Enrolment Queue / Staff Queue', 'Academics → Sessions, Classes, Subjects, Assessments Config', 'Assessments → Exams & Tests, Results, Question Bank', 'Finance → School Fees', 'HR & Payroll', 'Management → ID Cards, Certificates'],
     firstSteps: [
       'Create your session and terms',
       'Add classes and subjects',
@@ -173,8 +175,10 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'Lesson notes & timetable', detail: 'Write lesson notes per class and subject; see your weekly timetable.' },
       { title: 'Students & remarks', detail: 'See your students and add behaviour or academic remarks.' },
       { title: 'HR self-service', detail: 'Apply for leave and view your payslips.' },
+      { title: 'My ID card', detail: 'Your staff ID card in 3D: turn it over, then print it or download it as a PDF.' },
+      { title: 'Profile & settings', detail: 'Update your photo, phone number and emergency contact, and change your password.' },
     ],
-    whereToFind: ['Assessments → CBT Exams & Tests, Question Papers, Question Bank, Grading', 'Attendance, Academics, HR & Payroll'],
+    whereToFind: ['Assessments → CBT Exams & Tests, Question Papers, Question Bank, Grading', 'Attendance, Academics, HR & Payroll', 'My ID Card, Settings'],
     firstSteps: ['Accept your email invite and set a password', 'Enter scores for your subjects', 'Submit your exam paper before the deadline'],
     status: 'live',
   },
@@ -190,8 +194,10 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'Assignments', detail: 'See and submit assignments set by teachers.' },
       { title: 'Scores', detail: 'See results from attempted exams.' },
       { title: 'Timetable', detail: 'The class timetable for the week.' },
+      { title: 'ID card', detail: 'Your student ID card in 3D, ready to print or download.' },
+      { title: 'Certificates', detail: 'Every certificate the school gives you, such as a testimonial, an award or your graduation certificate, to view in 3D and download. Graduates keep access.' },
     ],
-    whereToFind: ['Dashboard → Exams, Assignments, Grades, Timetable'],
+    whereToFind: ['Dashboard → Exams, Assignments, Grades, Timetable', 'My ID Card, My Certificates'],
     firstSteps: ['Sign in with your reg. number and temporary password', 'Change your password'],
     comingSoon: ['Term report cards in the student portal'],
     status: 'partial',
@@ -222,7 +228,7 @@ export interface ShowcaseItem {
   title: string
   body: string
   points: Array<string>
-  visual: 'fee-register' | 'report-sheet' | 'exam-review' | 'enrolment' | 'question-bank' | 'roles'
+  visual: 'fee-register' | 'report-sheet' | 'exam-review' | 'enrolment' | 'question-bank' | 'roles' | 'id-certificates'
 }
 
 export const SHOWCASE: Array<ShowcaseItem> = [
@@ -257,6 +263,14 @@ export const SHOWCASE: Array<ShowcaseItem> = [
     body: 'Any approved exam or test prints on A4 — or downloads as a PDF — with your logo, address, session and term already on it. Last year’s questions are a filter away.',
     points: ['School logo and details on every paper', 'Marking guide version for staff', 'Filter by session, term, class and subject', 'One-click PDF download'],
     visual: 'question-bank',
+  },
+  {
+    id: 'id-certificates',
+    eyebrow: 'ID cards & certificates',
+    title: 'ID cards and certificates in your school’s design',
+    body: 'Design your student and staff ID cards and your certificates once: graduation, testimonials, MSSN, FCS, awards. Give a certificate to one student or a whole class, print at real size or download a class as one PDF. Students and staff see theirs in 3D on their own portal.',
+    points: ['ID cards in portrait or landscape, four designs, your colours', 'Graduation, testimonial, club and award certificates', 'One student, a whole class, or past students', 'Print, or download a whole class as one PDF'],
+    visual: 'id-certificates',
   },
   {
     id: 'admissions',

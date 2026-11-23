@@ -67,6 +67,10 @@ const FAQ_CATEGORIES = [
         a: 'Yes. Schola provides distinct, role-based portals for Administrators, Teachers, and Students/Parents, ensuring everyone has appropriate access.',
       },
       {
+        q: 'Can Schola make ID cards and certificates?',
+        a: `Yes. Design your student and staff ID cards (portrait or landscape, in your colours, with your signature) and your certificates: graduation, testimonials, MSSN, FCS and other club certificates, and awards, in your own wording. Print a whole class at once or download them as one PDF. Students and staff can view theirs in 3D on their own portal. Certificates are on every plan; on the free plan, ID cards cover your first ${FREE_STUDENTS} students and ${FREE_STAFF} staff.`,
+      },
+      {
         q: 'How much does Schola cost?',
         a: `Standard is ${naira(PRICE_PER_STUDENT)} per student, per term, with every feature included (report cards, publishing results, CBT, AI tools, finance, multiple branches). You never pay for more than ${MAX_BILLED_STUDENTS} students, so no school pays more than ${naira(MAX_TERM_BILL)} a term. Schools with fewer than ${MIN_BILLED_STUDENTS} students are billed for ${MIN_BILLED_STUDENTS}.`,
       },

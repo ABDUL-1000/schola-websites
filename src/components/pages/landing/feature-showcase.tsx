@@ -160,6 +160,60 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
           </div>
         </Card>
       )
+    case 'id-certificates':
+      return (
+        <Card label="ID card & certificate — your design">
+          <div className="group flex items-center justify-center gap-4 py-3 [perspective:900px]">
+            {/* ID card */}
+            <div className="w-[104px] shrink-0 -rotate-6 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(-14deg)_rotateZ(-3deg)]">
+              <div className="bg-[#1e3a8a] px-2 pb-6 pt-2 text-center">
+                <div className="text-[6px] font-extrabold uppercase tracking-wider text-white">Your School Name</div>
+                <div className="text-[5px] font-bold uppercase tracking-widest text-amber-400">Student ID card</div>
+              </div>
+              <div className="-mt-5 flex justify-center">
+                <div className="flex size-11 items-center justify-center rounded-full border-2 border-white bg-blue-100 text-xs font-bold text-[#1e3a8a] shadow">AB</div>
+              </div>
+              <div className="px-2 pb-2 pt-1 text-center">
+                <div className="text-[8px] font-bold text-slate-900">Amina Bello</div>
+                <div className="text-[6px] text-slate-500">JSS 2 Gold · O+</div>
+                <div className="mt-1.5 flex h-3.5 justify-center gap-px">
+                  {[2, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 2, 3, 1].map((w, i) => (
+                    <span key={i} className="bg-slate-900" style={{ width: w }} />
+                  ))}
+                </div>
+              </div>
+              <div className="h-1.5 bg-amber-400" />
+            </div>
+            {/* certificate */}
+            <div className="relative w-[230px] rotate-2 bg-[#fdf8ec] p-1.5 shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(12deg)_rotateZ(1deg)]">
+              <div className="border-[3px] border-[#1e3a8a] p-0.5">
+                <div className="border border-[#b8860b] px-3 py-2.5 text-center">
+                  <div className="text-[6px] font-bold uppercase tracking-widest text-[#1e3a8a]">Your School Name</div>
+                  <div className="mt-0.5 font-serif text-[15px] font-bold uppercase leading-none tracking-[0.12em] text-[#1e3a8a]">Certificate</div>
+                  <div className="font-serif text-[9px] italic text-[#b8860b]">of Graduation</div>
+                  <div className="mt-1.5 font-serif text-[6px] italic text-slate-500">This is to certify that</div>
+                  <div className="font-serif text-[13px] italic text-[#1e3a8a]">Amina Bello</div>
+                  <div className="mx-auto mt-0.5 h-px w-24 bg-[#b8860b]/60" />
+                  <div className="mx-auto mt-1 max-w-[170px] font-serif text-[5.5px] leading-snug text-slate-600">
+                    has successfully completed the Senior Secondary School course of study and is hereby awarded this certificate.
+                  </div>
+                  <div className="mt-2 flex items-end justify-between px-2">
+                    <div className="w-12 border-t border-[#b8860b] pt-0.5 text-[5px] text-slate-500">Principal</div>
+                    <div className="flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-200 via-amber-500 to-amber-700 text-[6px] font-bold text-amber-950 shadow">YS</div>
+                    <div className="w-12 border-t border-[#b8860b] pt-0.5 text-[5px] text-slate-500">Proprietor</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <Pill tone="info">Graduation</Pill>
+            <Pill tone="info">Testimonial</Pill>
+            <Pill tone="info">MSSN / FCS</Pill>
+            <Pill tone="good">Whole class as one PDF</Pill>
+          </div>
+        </Card>
+      )
     case 'roles':
       return (
         <Card label="One staff member, three hats">

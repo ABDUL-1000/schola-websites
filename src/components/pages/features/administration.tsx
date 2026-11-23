@@ -1,5 +1,5 @@
 import { CustomCard } from '@/components/custom-ui/custom-card'
-import { Building2, Users, Briefcase, Boxes } from 'lucide-react'
+import { Building2, Users, Briefcase, Boxes, IdCard, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const FEATURES = [
@@ -29,6 +29,20 @@ const FEATURES = [
     description:
       'Share your enrolment and staff registration links. Applications arrive complete in a review queue; approving emails login details.',
     icon: Boxes,
+    badge: 'Admin',
+  },
+  {
+    title: 'ID Cards',
+    description:
+      'Design student and staff ID cards in your colours, portrait or landscape. Print a whole class at real size or download them as one PDF; everyone sees theirs in 3D.',
+    icon: IdCard,
+    badge: 'Admin',
+  },
+  {
+    title: 'Certificates',
+    description:
+      'Graduation certificates, testimonials, MSSN, FCS and club certificates, and awards in your own wording. Give one to a single student or a whole class.',
+    icon: Award,
     badge: 'Admin',
   },
 ]

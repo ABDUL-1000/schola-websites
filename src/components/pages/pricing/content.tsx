@@ -42,6 +42,7 @@ const FREE_FEATURES = [
   'Score entry, broadsheet and class positions',
   'Fees and finance records',
   'Student and staff ID cards, in your design',
+  'Certificates: graduation, testimonials, clubs and awards',
   'Report cards (with a "free plan" watermark)',
   `${FREE_CBT_EXAMS} CBT exams to try`,
 ]
@@ -52,6 +53,7 @@ const STANDARD_FEATURES = [
   'Publish results to students and parents in one click',
   "Print a whole class's report cards at once",
   'ID cards for every student and staff member',
+  'Certificates for every student, a whole class at once',
   'Unlimited CBT exams',
   'AI lesson notes, lesson plans and exam questions',
   'Everything in Free',
@@ -187,6 +189,7 @@ const ROWS: Array<[string, string | boolean, string | boolean]> = [
   ['Score entry, broadsheet and positions', true, true],
   ['Fees and finance', true, true],
   ['ID cards (3D view, print, your design)', `First ${FREE_STUDENTS} students & ${FREE_STAFF} staff`, 'Everyone'],
+  ['Certificates (graduation, testimonial, clubs, awards)', true, true],
   ['Report cards', 'With watermark', 'Clean'],
   ['Publish results to students and parents', false, true],
   ["Print a whole class's report cards at once", false, true],
