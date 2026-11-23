@@ -1,4 +1,5 @@
 import { FaqAccordion } from '@/components/custom-ui/faq-accordion'
+import { FREE_STAFF, FREE_STUDENTS, MAX_BILLED_STUDENTS, MAX_TERM_BILL, PRICE_PER_STUDENT, TRIAL_DAYS, naira } from '@/constants/pricing'
 
 const FAQS = [
   {
@@ -15,7 +16,7 @@ const FAQS = [
   },
   {
     q: 'How much does Schola cost?',
-    a: 'Schola offers transparent termly pricing starting at ₦1,000 per active student per term, with automatic volume discounts for larger schools. You can slide your student population on our calculator to see your exact rate.',
+    a: `Every school starts with a ${TRIAL_DAYS}-day free trial with every feature unlocked. After that you can stay on the free plan (up to ${FREE_STUDENTS} students and ${FREE_STAFF} staff, with watermarked report cards) or move to Standard at ${naira(PRICE_PER_STUDENT)} per student, per term, with everything included. You never pay for more than ${MAX_BILLED_STUDENTS} students (${naira(MAX_TERM_BILL)} a term at most).`,
   },
   {
     q: 'What devices does Schola support?',

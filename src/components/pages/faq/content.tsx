@@ -1,4 +1,5 @@
 import { Rocket, ShieldCheck, CreditCard, HelpCircle } from 'lucide-react'
+import { FREE_STAFF, FREE_STUDENTS, MAX_BILLED_STUDENTS, MAX_TERM_BILL, MIN_BILLED_STUDENTS, PRICE_PER_STUDENT, TRIAL_DAYS, naira } from '@/constants/pricing'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { FaqAccordion } from '@/components/custom-ui/faq-accordion'
@@ -66,8 +67,16 @@ const FAQ_CATEGORIES = [
         a: 'Yes. Schola provides distinct, role-based portals for Administrators, Teachers, and Students/Parents, ensuring everyone has appropriate access.',
       },
       {
-        q: 'What happens after the beta period?',
-        a: 'Early adopters will transition into our favorable launch pricing tier. You will be notified well in advance of any billing changes.',
+        q: 'How much does Schola cost?',
+        a: `Standard is ${naira(PRICE_PER_STUDENT)} per student, per term, with every feature included (report cards, publishing results, CBT, AI tools, finance, multiple branches). You never pay for more than ${MAX_BILLED_STUDENTS} students, so no school pays more than ${naira(MAX_TERM_BILL)} a term. Schools with fewer than ${MIN_BILLED_STUDENTS} students are billed for ${MIN_BILLED_STUDENTS}.`,
+      },
+      {
+        q: 'Is there a free trial or a free plan?',
+        a: `Yes, both. Every school gets a ${TRIAL_DAYS}-day free trial with everything unlocked. After the trial you can keep using Schola on the free plan: up to ${FREE_STUDENTS} students and ${FREE_STAFF} staff, with watermarked report cards and no publishing to parents.`,
+      },
+      {
+        q: 'What happens to our data when the trial ends?',
+        a: `Nothing is deleted. Every student, staff member and score you added stays and keeps working. On the free plan you just can't add more than ${FREE_STUDENTS} students or ${FREE_STAFF} staff until you upgrade.`,
       },
       {
         q: 'Do you offer non-profit discounts?',

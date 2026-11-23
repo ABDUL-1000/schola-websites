@@ -3,5 +3,6 @@ export const NAV_LINKS = [
   { name: 'Product Tour', href: '/product-tour' },
   { name: 'Features', href: '/features' },
   { name: 'Solutions', href: '/solutions' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
 ] as const

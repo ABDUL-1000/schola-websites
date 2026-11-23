@@ -10,20 +10,15 @@ import {
   Printer,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { FREE_STUDENTS, MAX_BILLED_STUDENTS, MAX_TERM_BILL, MIN_BILLED_STUDENTS, PRICE_PER_STUDENT, TRIAL_DAYS, billedStudents, naira, termBill } from '@/constants/pricing'
 
 export function TermFeeCalculator() {
   const [studentCount, setStudentCount] = useState<number>(350)
 
-  // Pricing tiers: base ₦1,000/student/term with volume discounts
-  const getRatePerStudent = (count: number): number => {
-    if (count > 1000) return 650
-    if (count > 600) return 750
-    if (count > 250) return 850
-    return 1000
-  }
-
-  const ratePerStudent = getRatePerStudent(studentCount)
-  const termTotal = studentCount * ratePerStudent
+  // One flat price: Standard, everything included.
+  const ratePerStudent = PRICE_PER_STUDENT
+  const termTotal = termBill(studentCount)
+  const billed = billedStudents(studentCount)
   const annualTotal = termTotal * 3
   const hoursSavedPerTerm = Math.round(studentCount * 0.22) // ~80 hours for 350 students
   const estimatedPaperSavings = Math.round(studentCount * 350) // ~₦122,500 paper/toner savings
@@ -44,9 +39,10 @@ export function TermFeeCalculator() {
             Calculate Your School&apos;s Exact Term Bill
           </h2>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            No hidden setup fees. No surprise server maintenance charges. Slide
-            to your active student population and see your exact term
-            investment.
+            One simple price: {naira(PRICE_PER_STUDENT)} per student, per term,
+            with every feature included, and you never pay for more than{' '}
+            {MAX_BILLED_STUDENTS} students. Slide to your number of students to
+            see your exact term bill.
           </p>
         </div>
 
@@ -95,12 +91,16 @@ export function TermFeeCalculator() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-foreground">
-                      Applied Term Rate per Student
+                      Price per student, per term
                     </p>
                     <p className="text-[11px] text-muted-foreground">
-                      {studentCount > 250
-                        ? `Volume discount applied for ${studentCount} students`
-                        : 'Standard base term pricing'}
+                      {studentCount > MAX_BILLED_STUDENTS
+                        ? `You pay for ${MAX_BILLED_STUDENTS} students only: the other ${(studentCount - MAX_BILLED_STUDENTS).toLocaleString()} are free`
+                        : studentCount < MIN_BILLED_STUDENTS
+                        ? `Smaller schools are billed for ${MIN_BILLED_STUDENTS} students`
+                        : studentCount <= FREE_STUDENTS
+                          ? `Up to ${FREE_STUDENTS} students? You can also stay on the free plan`
+                          : 'Standard plan, everything included'}
                     </p>
                   </div>
                 </div>
@@ -156,8 +156,12 @@ export function TermFeeCalculator() {
                   <span className="text-xs text-muted-foreground">/ term</span>
                 </div>
                 <p className="text-[11px] text-muted-foreground mt-1">
+                  {billed.toLocaleString()} students × {naira(PRICE_PER_STUDENT)}.
                   Approx. ₦{annualTotal.toLocaleString()} for the full 3-term
                   academic session
+                </p>
+                <p className="text-[11px] font-semibold text-primary mt-1">
+                  The most any school pays: {naira(MAX_TERM_BILL)} a term
                 </p>
               </div>
 
@@ -176,6 +180,10 @@ export function TermFeeCalculator() {
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <CheckCircle2 className="size-3.5 text-primary shrink-0" />
+                  <span>CBT exams and AI lesson tools included</span>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <CheckCircle2 className="size-3.5 text-primary shrink-0" />
                   <span>Free bulk student & staff onboarding</span>
                 </div>
               </div>
@@ -190,11 +198,11 @@ export function TermFeeCalculator() {
                     to="/book-demo"
                     className="flex items-center justify-center gap-2"
                   >
-                    Lock In This Rate <ArrowRight className="size-4" />
+                    Start your {TRIAL_DAYS}-day free trial <ArrowRight className="size-4" />
                   </Link>
                 </Button>
                 <p className="text-[10px] text-muted-foreground text-center mt-2.5">
-                  🛡️ Free 15-minute lab test. No commitment required.
+                  Every feature free for {TRIAL_DAYS} days. No card, no commitment.
                 </p>
               </div>
             </div>
