@@ -1,5 +1,5 @@
 import { CustomCard } from '@/components/custom-ui/custom-card'
-import { Building2, Users, Briefcase, Boxes, IdCard, Award } from 'lucide-react'
+import { Building2, Users, Briefcase, Boxes, IdCard, Award, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const FEATURES = [
@@ -43,6 +43,13 @@ const FEATURES = [
     description:
       'Graduation certificates, testimonials, MSSN, FCS and club certificates, and awards in your own wording. Give one to a single student or a whole class.',
     icon: Award,
+    badge: 'Admin',
+  },
+  {
+    title: 'Admission & Appointment Letters',
+    description:
+      'Write your own admission and appointment letters with your logo, signature and stamp. Send them when you are ready: each one is emailed as a PDF and saved on the portal to download.',
+    icon: Mail,
     badge: 'Admin',
   },
 ]

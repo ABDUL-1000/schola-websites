@@ -13,10 +13,10 @@ Schola is built on an enterprise multi-tenant architecture designed specifically
 ### Dashboard Personas
 
 1. **Platform Super Admin (Backoffice)**: Master tenancy oversight, onboarding authorization, global grade scale templates, platform-wide billing overrides.
-2. **School Proprietor & Administrator Portal (`schola-school-web`)**: Executive academics, session/term lifecycle locks, class & department configuration, broadsheet approval, and report card publication.
-3. **Teacher / Staff Portal (`schola-staff-web`)**: Continuous assessment (CA) score entry, automated grade computation, class attendance roll calls, and student performance remarks.
+2. **School Proprietor & Administrator Portal (`schola-school-web`)**: Executive academics, session/term lifecycle locks, class & department configuration, broadsheet approval, report card publication, and school documents (ID cards, certificates, admission and appointment letters).
+3. **Teacher / Staff Portal (`schola-staff-web`)**: Continuous assessment (CA) score entry, automated grade computation, class attendance roll calls, student performance remarks, and their own ID card, appointment letter and profile settings.
 4. **Bursar & Finance Office**: Student fee register, manual teller receipt logging, debt rollover tracking across terms, and payment ledger reconciliation.
-5. **Parent & Student Self-Service Portal (`schola-student-web`)**: Real-time performance dashboards, tamper-proof printable report card downloads, and fee receipt history.
+5. **Parent & Student Self-Service Portal (`schola-student-web`)**: Real-time performance dashboards, tamper-proof printable report card downloads, fee receipt history, and their ID card, certificates and admission letter.
 
 ---
 
@@ -29,6 +29,7 @@ Schola is built on an enterprise multi-tenant architecture designed specifically
 | **School Fee Management**        | • School late fee settings<br>• Staff payroll records & pay slips (`payroll_records`)                                                                                                                | • Manual bank teller receipt entry<br>• Termly student billing register<br>• Debt memory carry-over across terms | • Self-reconciling virtual Nigerian bank account numbers per parent (OPay/Monnify/Paystack)<br>• Automated WhatsApp invoice & receipt dispatch<br>• Add-on club & extra-curricular activity self-billing |
 | **Staff & Student Attendance**   | • Daily student roll call attendance marking by teachers<br>• Attendance record tracking (`student_attendance`)                                                                                      | • Staff attendance logging (`staff_attendance`)<br>• Basic time-in / time-out capture                            | • Anti-proxy kiosk clock-in with dynamic TOTP QR code rotation<br>• Biometric PIN backup with geo-fencing                                                                                                |
 | **Computer-Based Testing (CBT)** | • AI question generator in staff portal (`ai-question-gen.tsx`)<br>• Question bank & exam models (`exam`, `exam_question`)                                                                           | • Online quiz & test taking in student portal (`exams.tsx`)<br>• Objective / Theory / Essay question types       | • 100% Offline Desktop CBT lockdown client (Electron + local SQLite)<br>• Zero-internet local network exam server with conflict-free cloud sync                                                          |
+| **School Documents**             | • Student & staff ID cards (4 designs, 3D viewer, print or one PDF per class / all staff)<br>• Certificates (graduation, testimonial, primary leaving, MSSN, FCS/CRS, awards) issued to a student or whole class, with serial numbers<br>• Admission & appointment letters, school-written, sent when the school chooses, emailed as a PDF attachment and saved on the portal | —                                                                                                                | • Online certificate verification by serial number / QR<br>• Letter acceptance (staff sign and return online)                                                                                           |
 | **Backoffice Multi-Tenancy**     | • Multi-branch school support (`school_branches`)<br>• App administrator roles (`app_admins`)                                                                                                        | • School onboarding approval flow (`school.onboarding.service.ts`)                                               | • 1-click tenant audit impersonation<br>• Dynamic school fee override & grace-period toggle<br>• Automated multi-tenant metrics aggregator                                                               |
 
 ---
@@ -100,12 +101,14 @@ Schola is built on an enterprise multi-tenant architecture designed specifically
 - Academic calendar control: Terms, holidays, and examination dates.
 - Class allocation: Assigning class leads and subject teachers.
 - Final academic validation: 1-click lock/unlock of term results and report card distribution.
+- School documents: design and print ID cards, issue certificates, and send admission and appointment letters (emailed as PDF).
 
 ### Teacher Portal
 
 - Gradebook score entry interface with row-level calculation.
 - Automated ranking calculation for subject and overall class positions.
 - Daily student attendance register (Present / Absent / Late / Excused).
+- My ID card, appointment letter, and settings (photo, phone, emergency contact, password).
 
 ### Bursar / Finance
 
@@ -118,3 +121,4 @@ Schola is built on an enterprise multi-tenant architecture designed specifically
 - View live subject grades, assignment feedback, and historical term performances.
 - Instant download of official term report cards with watermark verification.
 - Review manual payment history and current outstanding fee balance.
+- View and download the student ID card, certificates and admission letter.

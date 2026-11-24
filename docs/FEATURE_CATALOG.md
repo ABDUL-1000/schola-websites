@@ -60,9 +60,10 @@ A staff member can hold several roles. Legacy staff with `roles = ADMIN` count a
 - Review queues for school owner and admins; approve & enroll emails the parent login details; decline emails an optional note; staff approval emails an invite.
 - Add/edit staff, classes, students; form-master assignment; multi-branch.
 
-### ID cards & certificates
+### ID cards, certificates & letters
 - ID cards for students and staff: portrait or landscape, 4 designs, school colours, motto, signature, chosen details; 3D viewer; print at real size (fronts and mirrored backs for double-sided printing) or download as one PDF, per person, class or all staff. Staff and students see their own card. Free plan: first 100 students and 10 staff.
 - Certificates: templates from presets (graduation, testimonial, primary leaving, MSSN, FCS, subject excellence, award, blank), 4 styles, own wording with placeholders, per-student lines (e.g. conduct), up to 3 signatures, seal, serial number and barcode. Give to one student, picked students, a whole class or past graduates; print or download as PDF. Students (including graduates) see theirs in 3D. All plans.
+- Admission letters (students) and appointment letters (staff): school-written wording with placeholders ({studentName}, {class}, {regNumber}, {jobTitle}, {startDate}…), classic or modern style, colours, logo, motto, signatory, signature and stamp, footer note, live preview. Approval does not send a letter; the school sends it from Management → Letters to one person or many. Each is emailed as a PDF attachment (made on the server) and saved as sent, so later wording changes don't alter it. Students and staff view theirs on their portal (envelope animation) and download or print it. All plans.
 - Staff settings page: photo, title, gender, phone, emergency contact, password, theme.
 
 ### Other

@@ -43,6 +43,7 @@ const FREE_FEATURES = [
   'Fees and finance records',
   'Student and staff ID cards, in your design',
   'Certificates: graduation, testimonials, clubs and awards',
+  'Admission and appointment letters, emailed as PDF',
   'Report cards (with a "free plan" watermark)',
   `${FREE_CBT_EXAMS} CBT exams to try`,
 ]
@@ -190,6 +191,7 @@ const ROWS: Array<[string, string | boolean, string | boolean]> = [
   ['Fees and finance', true, true],
   ['ID cards (3D view, print, your design)', `First ${FREE_STUDENTS} students & ${FREE_STAFF} staff`, 'Everyone'],
   ['Certificates (graduation, testimonial, clubs, awards)', true, true],
+  ['Admission and appointment letters (emailed as PDF)', true, true],
   ['Report cards', 'With watermark', 'Clean'],
   ['Publish results to students and parents', false, true],
   ["Print a whole class's report cards at once", false, true],

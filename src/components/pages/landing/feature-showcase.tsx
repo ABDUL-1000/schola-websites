@@ -162,7 +162,7 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
       )
     case 'id-certificates':
       return (
-        <Card label="ID card & certificate — your design">
+        <Card label="ID card, certificate & letters — your design">
           <div className="group flex items-center justify-center gap-4 py-3 [perspective:900px]">
             {/* ID card */}
             <div className="w-[104px] shrink-0 -rotate-6 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(-14deg)_rotateZ(-3deg)]">
@@ -210,6 +210,7 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
             <Pill tone="info">Graduation</Pill>
             <Pill tone="info">Testimonial</Pill>
             <Pill tone="info">MSSN / FCS</Pill>
+            <Pill tone="info">Admission letters</Pill>
             <Pill tone="good">Whole class as one PDF</Pill>
           </div>
         </Card>
