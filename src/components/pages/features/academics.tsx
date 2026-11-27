@@ -4,6 +4,8 @@ import {
   FileText,
   GraduationCap,
   CheckCircle2,
+  ScanText,
+  Sparkles,
 } from 'lucide-react'
 import { CustomCard } from '@/components/custom-ui/custom-card'
 
@@ -34,6 +36,20 @@ const FEATURES = [
     description:
       'Students can submit assignments online. Teachers grade and return feedback digitally.',
     icon: GraduationCap,
+    badges: ['Student'],
+  },
+  {
+    title: 'Scan Questions with AI',
+    description:
+      'Photograph a printed or handwritten exam paper and get typed, editable questions. Save as a written paper or CBT, download as PDF or Word.',
+    icon: ScanText,
+    badges: ['Teacher'],
+  },
+  {
+    title: 'AI Tutor',
+    description:
+      'Students ask questions or snap a photo and get step-by-step help at their class level. Paused automatically during CBT exams.',
+    icon: Sparkles,
     badges: ['Student'],
   },
 ]

@@ -18,13 +18,13 @@ export function FeatureShowcase() {
 
         <div className="divide-y divide-dashed divide-border">
           {SHOWCASE.map((item, i) => (
-            <article key={item.id} className="grid items-center gap-10 py-14 first:pt-0 last:pb-0 md:grid-cols-2 md:gap-16">
-              <div className={cn(i % 2 === 1 && 'md:order-2')}>
+            <article key={item.id} className="grid grid-cols-1 items-center gap-8 py-12 first:pt-0 last:pb-0 sm:gap-10 sm:py-14 md:grid-cols-2 md:gap-16">
+              <div className={cn('min-w-0', i % 2 === 1 && 'md:order-2')}>
                 <p className="text-xs font-bold uppercase tracking-wider text-orange">
                   Nº {i + 1} — {item.eyebrow}
                 </p>
-                <h3 className="mt-2 text-2xl font-bold leading-tight text-foreground sm:text-3xl">{item.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{item.body}</p>
+                <h3 className="mt-2 text-xl font-bold leading-tight text-foreground sm:text-3xl">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">{item.body}</p>
                 <ul className="mt-5 space-y-2">
                   {item.points.map((p) => (
                     <li key={p} className="flex items-start gap-2 text-sm text-foreground">
@@ -33,7 +33,7 @@ export function FeatureShowcase() {
                   ))}
                 </ul>
               </div>
-              <div className={cn(i % 2 === 1 && 'md:order-1')}>
+              <div className={cn('min-w-0', i % 2 === 1 && 'md:order-1')}>
                 <Visual kind={item.visual} />
               </div>
             </article>
@@ -46,11 +46,11 @@ export function FeatureShowcase() {
 
 function Card({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="relative mx-auto max-w-md rounded-2xl border border-border bg-card p-5 shadow-sm">
+    <div className="relative mx-auto w-full max-w-md rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
       <span aria-hidden className="absolute -top-2.5 left-8 h-5 w-16 -rotate-2 rounded-sm bg-primary/15" />
-      <div className="mb-3 flex items-center justify-between">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</span>
-        <span className="text-[10px] text-muted-foreground/70">Sample data</span>
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <span className="min-w-0 truncate text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</span>
+        <span className="shrink-0 text-[10px] text-muted-foreground/70">Sample data</span>
       </div>
       {children}
     </div>
@@ -109,7 +109,7 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
       return (
         <Card label="Fee register — this term">
           <Row left="Adaeze Okonkwo" sub="JSS 2A" right={<><div className="text-sm font-bold tabular-nums">₦194,000</div><Pill tone="good">Paid</Pill></>} />
-          <Row left="Emeka Nwosu" sub="Primary 5B" right={<><div className="text-sm font-bold tabular-nums text-amber-700 dark:text-amber-300">₦48,500 of ₦97,000</div><Pill tone="warn">Part paid</Pill></>} />
+          <Row left="Emeka Nwosu" sub="Primary 5B" right={<><div className="text-sm font-bold tabular-nums text-amber-700 dark:text-amber-300">₦48,500<span className="hidden font-normal text-muted-foreground min-[400px]:inline"> of ₦97,000</span></div><Pill tone="warn">Part paid</Pill></>} />
           <Row left="Fatima Abdullahi" sub="SSS 1C" right={<><div className="text-sm font-bold tabular-nums">₦240,000</div><Pill tone="good">Paid</Pill></>} />
           <Row left="Taiwo Adeleke" sub="Primary 3A" right={<><div className="text-sm font-bold tabular-nums text-red-600 dark:text-red-400">₦85,000</div><Pill tone="bad">Owing</Pill></>} />
         </Card>
@@ -127,9 +127,9 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
               left={t}
               sub={s}
               right={
-                <div className="flex gap-1.5">
-                  <span className="rounded-md bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">Approve</span>
-                  <span className="rounded-md border border-border px-2 py-1 text-[10px] font-semibold text-muted-foreground">Reject</span>
+                <div className="flex gap-1">
+                  <span className="rounded-md bg-emerald-100 px-1.5 py-1 text-[10px] font-semibold text-emerald-700 sm:px-2 dark:bg-emerald-500/15 dark:text-emerald-300">Approve</span>
+                  <span className="rounded-md border border-border px-1.5 py-1 text-[10px] font-semibold text-muted-foreground sm:px-2">Reject</span>
                 </div>
               }
             />
@@ -163,15 +163,15 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
     case 'id-certificates':
       return (
         <Card label="ID card, certificate & letters — your design">
-          <div className="group flex items-center justify-center gap-4 py-3 [perspective:900px]">
+          <div className="group flex items-center justify-center gap-2 py-3 [perspective:900px] sm:gap-4">
             {/* ID card */}
-            <div className="w-[104px] shrink-0 -rotate-6 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(-14deg)_rotateZ(-3deg)]">
+            <div className="w-[84px] shrink-0 -rotate-6 overflow-hidden sm:w-[104px] rounded-lg bg-white shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(-14deg)_rotateZ(-3deg)]">
               <div className="bg-[#1e3a8a] px-2 pb-6 pt-2 text-center">
                 <div className="text-[6px] font-extrabold uppercase tracking-wider text-white">Your School Name</div>
                 <div className="text-[5px] font-bold uppercase tracking-widest text-amber-400">Student ID card</div>
               </div>
               <div className="-mt-5 flex justify-center">
-                <div className="flex size-11 items-center justify-center rounded-full border-2 border-white bg-blue-100 text-xs font-bold text-[#1e3a8a] shadow">AB</div>
+                <div className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-blue-100 text-[10px] font-bold text-[#1e3a8a] shadow sm:size-11 sm:text-xs">AB</div>
               </div>
               <div className="px-2 pb-2 pt-1 text-center">
                 <div className="text-[8px] font-bold text-slate-900">Amina Bello</div>
@@ -185,14 +185,14 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
               <div className="h-1.5 bg-amber-400" />
             </div>
             {/* certificate */}
-            <div className="relative w-[230px] rotate-2 bg-[#fdf8ec] p-1.5 shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(12deg)_rotateZ(1deg)]">
+            <div className="relative w-[190px] min-w-0 rotate-2 bg-[#fdf8ec] sm:w-[230px] p-1.5 shadow-lg ring-1 ring-black/5 transition-transform duration-500 group-hover:[transform:rotateY(12deg)_rotateZ(1deg)]">
               <div className="border-[3px] border-[#1e3a8a] p-0.5">
                 <div className="border border-[#b8860b] px-3 py-2.5 text-center">
                   <div className="text-[6px] font-bold uppercase tracking-widest text-[#1e3a8a]">Your School Name</div>
-                  <div className="mt-0.5 font-serif text-[15px] font-bold uppercase leading-none tracking-[0.12em] text-[#1e3a8a]">Certificate</div>
+                  <div className="mt-0.5 font-serif text-[12px] font-bold uppercase leading-none tracking-[0.12em] text-[#1e3a8a] sm:text-[15px]">Certificate</div>
                   <div className="font-serif text-[9px] italic text-[#b8860b]">of Graduation</div>
                   <div className="mt-1.5 font-serif text-[6px] italic text-slate-500">This is to certify that</div>
-                  <div className="font-serif text-[13px] italic text-[#1e3a8a]">Amina Bello</div>
+                  <div className="font-serif text-[11px] italic text-[#1e3a8a] sm:text-[13px]">Amina Bello</div>
                   <div className="mx-auto mt-0.5 h-px w-24 bg-[#b8860b]/60" />
                   <div className="mx-auto mt-1 max-w-[170px] font-serif text-[5.5px] leading-snug text-slate-600">
                     has successfully completed the Senior Secondary School course of study and is hereby awarded this certificate.
@@ -215,6 +215,82 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
           </div>
         </Card>
       )
+    case 'ai':
+      return (
+        <Card label="AI for teachers & students">
+          <div className="grid gap-3 min-[420px]:grid-cols-2">
+            <div className="min-w-0 rounded-xl border border-border bg-background p-3">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-primary">Scan a paper</div>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="relative h-16 w-12 shrink-0 -rotate-3 rounded-sm bg-[#fbfaf5] p-1 shadow ring-1 ring-black/10">
+                  {[90, 70, 80, 55, 75, 60].map((w, i) => (
+                    <div key={i} className="mb-1 h-[3px] rounded-full bg-slate-400/70" style={{ width: `${w}%` }} />
+                  ))}
+                </div>
+                <span className="text-lg text-muted-foreground">→</span>
+                <div className="min-w-0 flex-1 space-y-1 text-[10px]">
+                  <div className="truncate font-semibold text-foreground">1. Simplify 3x + 5x − 2x</div>
+                  <div className="grid grid-cols-2 gap-x-2 text-muted-foreground">
+                    <span className="font-semibold text-emerald-600">(a) 6x</span>
+                    <span>(b) 10x</span>
+                    <span>(c) 8x</span>
+                    <span>(d) 4x</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-1">
+                <Pill tone="info">PDF</Pill>
+                <Pill tone="info">Word</Pill>
+                <Pill tone="good">CBT</Pill>
+              </div>
+            </div>
+            <div className="min-w-0 rounded-xl border border-border bg-background p-3">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-primary">AI Tutor</div>
+              <div className="mt-2 space-y-1.5 text-[11px]">
+                <div className="ml-auto w-fit max-w-[90%] rounded-xl rounded-br-sm bg-primary px-2.5 py-1.5 text-primary-foreground">Solve 2y + 7 = 19</div>
+                <div className="w-fit max-w-[95%] rounded-xl rounded-tl-sm border border-border bg-card px-2.5 py-1.5 text-foreground">
+                  Subtract 7: 2y = 12. Divide by 2:
+                  <div className="mt-1 rounded-md bg-emerald-500/10 px-1.5 py-0.5 font-semibold text-emerald-700 dark:text-emerald-300">Answer: y = 6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      )
+    case 'recruitment':
+      return (
+        <Card label="Recruitment — Mathematics Teacher">
+          <div className="mb-3 flex h-2 overflow-hidden rounded-full bg-muted">
+            {[
+              ['bg-slate-400', 30],
+              ['bg-sky-500', 20],
+              ['bg-violet-500', 20],
+              ['bg-amber-500', 15],
+              ['bg-emerald-500', 15],
+            ].map(([c, w]) => (
+              <div key={c as string} className={c as string} style={{ width: `${w}%` }} />
+            ))}
+          </div>
+          {[
+            ['Tunde Adeyemi', 'CBT 85% · Interview 81%', '82.6%', 'good', 'Pass'],
+            ['Amina Bello', 'CBT 72% · Interview 68%', '69.6%', 'good', 'Pass'],
+            ['Ibrahim Musa', 'CBT 41% · Interview 52%', '47.6%', 'bad', 'Not successful'],
+          ].map(([n, sub, total, tone, label]) => (
+            <Row
+              key={n}
+              left={n}
+              sub={sub}
+              right={
+                <div className="flex flex-col items-end gap-0.5">
+                  <span className="text-sm font-bold tabular-nums">{total}</span>
+                  <Pill tone={tone as 'good' | 'bad'}>{label}</Pill>
+                </div>
+              }
+            />
+          ))}
+          <div className="mt-3 rounded-lg bg-muted/60 p-2.5 text-[11px] text-muted-foreground">Publish → every candidate is emailed their scores. Hire → pending staff, then the appointment letter.</div>
+        </Card>
+      )
     case 'roles':
       return (
         <Card label="One staff member, three hats">
@@ -230,7 +306,7 @@ function Visual({ kind }: { kind: ShowcaseItem['visual'] }) {
             <Pill tone="good">Exam Officer</Pill>
             <Pill tone="warn">Form master · JSS 2A</Pill>
           </div>
-          <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground">
+          <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground [&>div]:truncate">
             {['Question Papers', 'Exam Office', 'My Form Class', 'Grading'].map((s) => (
               <div key={s} className="rounded-md border border-border px-2 py-1.5">{s}</div>
             ))}

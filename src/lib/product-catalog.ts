@@ -69,8 +69,10 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'ID cards', detail: 'Design student and staff ID cards (portrait or landscape, four designs, your colours and signature), then print a class at real size or download them as one PDF.' },
       { title: 'Certificates', detail: 'Graduation certificates, testimonials, MSSN / FCS and other club certificates, and awards in your own wording. Give one to a single student or a whole class, including past students.' },
       { title: 'Admission & appointment letters', detail: 'Write your admission letter for new students and appointment letter for new staff, with your logo, signature and stamp. Send them when you are ready: each is emailed as a PDF and saved on the student’s or staff member’s portal.' },
+      { title: 'Recruitment', detail: 'Post a vacancy and share its link. Candidates apply with their CV; shortlist, invite them to a supervised CBT test and an interview, score them, email results and hire, from any stage.' },
+      { title: 'AI Tutor for students', detail: 'Switch the students’ AI Tutor on or off, set how many questions each student can ask a day, and see how much it’s used.' },
     ],
-    whereToFind: ['Management → Staff / Students / Enrolment Queue / Staff Queue', 'Academics → Sessions, Classes, Subjects, Assessments Config', 'Assessments → Exams & Tests, Results, Question Bank', 'Finance → School Fees', 'HR & Payroll', 'Management → ID Cards, Certificates, Letters'],
+    whereToFind: ['Management → Staff / Students / Enrolment Queue / Staff Queue', 'Academics → Sessions, Classes, Subjects, Assessments Config', 'Assessments → Exams & Tests, Results, Question Bank', 'Finance → School Fees', 'HR & Payroll', 'Management → ID Cards, Certificates, Letters', 'Staff → Recruitment', 'Settings → AI Tutor'],
     firstSteps: [
       'Create your session and terms',
       'Add classes and subjects',
@@ -134,7 +136,7 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'Review queue', detail: 'Written question papers and CBT exams waiting for approval, newest first.' },
       { title: 'Approve or reject', detail: 'Rejecting needs a reason; the teacher sees it and the paper goes back for editing.' },
       { title: 'Comment threads', detail: 'Back-and-forth with the teacher on each paper, with a full history.' },
-      { title: 'Print & PDF', detail: 'A4 papers with the school logo, address, session and term — with or without the marking guide.' },
+      { title: 'Print, PDF & Word', detail: 'A4 papers with the school logo, address, session and term — with or without the marking guide. Download as PDF, or as Word to edit.' },
       { title: 'Question bank', detail: 'Every exam and test ever set, filterable by session, term, class, subject and type.' },
     ],
     whereToFind: ['Exam Office → Review Queue, Question Bank'],
@@ -176,6 +178,9 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'Lesson notes & timetable', detail: 'Write lesson notes per class and subject; see your weekly timetable.' },
       { title: 'Students & remarks', detail: 'See your students and add behaviour or academic remarks.' },
       { title: 'HR self-service', detail: 'Apply for leave and view your payslips.' },
+      { title: 'Scan questions from a photo', detail: 'Photograph a printed or handwritten exam paper; AI types it out for you to check, then save it as a written paper or CBT exam.' },
+      { title: 'PDF & Word downloads', detail: 'Download any of your papers on the school letterhead as a PDF or an editable Word document.' },
+      { title: 'Interviews', detail: 'If you’re on a recruitment panel, score each candidate’s interview from your phone or laptop.' },
       { title: 'My ID card', detail: 'Your staff ID card in 3D: turn it over, then print it or download it as a PDF.' },
       { title: 'Appointment letter', detail: 'The appointment letter the school sent you, to read and download as a PDF any time.' },
       { title: 'Profile & settings', detail: 'Update your photo, phone number and emergency contact, and change your password.' },
@@ -199,8 +204,9 @@ export const ROLE_GUIDES: Array<RoleGuide> = [
       { title: 'ID card', detail: 'Your student ID card in 3D, ready to print or download.' },
       { title: 'Certificates', detail: 'Every certificate the school gives you, such as a testimonial, an award or your graduation certificate, to view in 3D and download. Graduates keep access.' },
       { title: 'Admission letter', detail: 'The admission letter the school sent, to read and download as a PDF any time.' },
+      { title: 'AI Tutor', detail: 'Ask a question or snap a photo of one and get step-by-step help at your class level: solve it, explain a topic, quiz me, or check my answer.' },
     ],
-    whereToFind: ['Dashboard → Exams, Assignments, Grades, Timetable', 'My ID Card, My Certificates, Admission Letter'],
+    whereToFind: ['Dashboard → Exams, Assignments, Grades, Timetable', 'My ID Card, My Certificates, Admission Letter, AI Tutor'],
     firstSteps: ['Sign in with your reg. number and temporary password', 'Change your password'],
     comingSoon: ['Term report cards in the student portal'],
     status: 'partial',
@@ -231,7 +237,7 @@ export interface ShowcaseItem {
   title: string
   body: string
   points: Array<string>
-  visual: 'fee-register' | 'report-sheet' | 'exam-review' | 'enrolment' | 'question-bank' | 'roles' | 'id-certificates'
+  visual: 'fee-register' | 'report-sheet' | 'exam-review' | 'enrolment' | 'question-bank' | 'roles' | 'id-certificates' | 'recruitment' | 'ai'
 }
 
 export const SHOWCASE: Array<ShowcaseItem> = [
@@ -263,8 +269,8 @@ export const SHOWCASE: Array<ShowcaseItem> = [
     id: 'print',
     eyebrow: 'Printing',
     title: 'Print-ready papers on your letterhead',
-    body: 'Any approved exam or test prints on A4 — or downloads as a PDF — with your logo, address, session and term already on it. Last year’s questions are a filter away.',
-    points: ['School logo and details on every paper', 'Marking guide version for staff', 'Filter by session, term, class and subject', 'One-click PDF download'],
+    body: 'Any approved exam or test prints on A4 — or downloads as a PDF or an editable Word document — with your logo, address, session and term already on it. Last year’s questions are a filter away.',
+    points: ['School logo and details on every paper', 'Marking guide version for staff', 'Filter by session, term, class and subject', 'One-click PDF or Word download'],
     visual: 'question-bank',
   },
   {
@@ -274,6 +280,22 @@ export const SHOWCASE: Array<ShowcaseItem> = [
     body: 'Design your student and staff ID cards and your certificates once: graduation, testimonials, MSSN, FCS, awards. Give a certificate to one student or a whole class, print at real size or download a class as one PDF. Send admission letters to new students and appointment letters to new staff, emailed as a PDF. Students and staff see theirs on their own portal.',
     points: ['ID cards in portrait or landscape, four designs, your colours', 'Graduation, testimonial, club and award certificates', 'One student, a whole class, or past students', 'Print, or download a whole class as one PDF', 'Admission and appointment letters, emailed as a PDF'],
     visual: 'id-certificates',
+  },
+  {
+    id: 'ai',
+    eyebrow: 'AI',
+    title: 'AI that saves teachers hours and helps students learn',
+    body: 'Snap a photo of a printed or handwritten exam paper and Schola types it out: check it, save it as a written paper or CBT exam, and download it as PDF or Word. Students get an AI Tutor that explains step by step at their class level, and pauses itself while they write a CBT exam.',
+    points: ['Scan questions from a photo into an editable paper', 'AI lesson notes, lesson plans and exam questions', 'Student AI Tutor: solve, explain, quiz me, check my answer', 'Daily limits the school controls'],
+    visual: 'ai',
+  },
+  {
+    id: 'recruitment',
+    eyebrow: 'Recruitment',
+    title: 'Hire teachers the organised way',
+    body: 'Post a vacancy and share its link. Candidates apply with their CV; you shortlist, invite them to a supervised CBT test and an interview, score them, and email every candidate their result. Hire from any stage, then send the appointment letter.',
+    points: ['A job link with CV upload', 'CBT tests on a phone or computer, under supervision', 'Interview panel scores, averaged for you', 'Results emailed with the score breakdown'],
+    visual: 'recruitment',
   },
   {
     id: 'admissions',
@@ -300,7 +322,6 @@ export const ROADMAP = [
   { title: 'Receipts & invoices', detail: 'Branded PDF receipts and term invoices, sent to parents.' },
   { title: 'New-session rollover', detail: 'Promote classes and carry unpaid balances into the new term in one step.' },
   { title: 'WhatsApp delivery', detail: 'Invoices, receipts and report cards straight to parents’ WhatsApp.' },
-  { title: 'AI question drafting', detail: 'Draft exam questions from a topic for the teacher to edit.' },
 ]
 
 export const FIRST_STEPS_TIMELINE = [

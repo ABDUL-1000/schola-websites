@@ -1,5 +1,5 @@
 import { CustomCard } from '@/components/custom-ui/custom-card'
-import { Building2, Users, Briefcase, Boxes, IdCard, Award, Mail } from 'lucide-react'
+import { Building2, Users, Briefcase, Boxes, IdCard, Award, Mail, UserSearch } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const FEATURES = [
@@ -50,6 +50,13 @@ const FEATURES = [
     description:
       'Write your own admission and appointment letters with your logo, signature and stamp. Send them when you are ready: each one is emailed as a PDF and saved on the portal to download.',
     icon: Mail,
+    badge: 'Admin',
+  },
+  {
+    title: 'Recruitment',
+    description:
+      'Post a vacancy with its own link. Candidates apply with a CV; shortlist, test them on CBT, score interviews as a panel, email results and hire from any stage.',
+    icon: UserSearch,
     badge: 'Admin',
   },
 ]

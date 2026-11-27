@@ -75,6 +75,18 @@ const FAQ_CATEGORIES = [
         a: 'Yes. Write your admission letter for new students and your appointment letter for new staff in your own words, with your logo, signature and stamp. Names, class, admission number, job title and start date fill in for each person. Approving someone does not send a letter; you send it when you are ready, to one person or many at once. Each letter is emailed as a PDF (to the parent or the staff member) and saved on their portal, where they can view and download it.',
       },
       {
+        q: 'Can Schola help us recruit teachers?',
+        a: 'Yes. Post a vacancy and share its link; candidates apply with their CV from any phone. You shortlist, invite them by email to a CBT test (taken at your school, under supervision) and an interview, and your panel scores each one. Schola works out the totals, emails every candidate their result with a breakdown, and when you hire someone they move to your pending staff, ready for their appointment letter. Every step is optional. The free plan includes one open vacancy at a time; unsuccessful candidates’ CVs are deleted a month after the decision.',
+      },
+      {
+        q: 'Is the AI Tutor safe for students?',
+        a: 'It only helps with schoolwork and explains step by step at the student’s class level, encouraging them to learn the method rather than copy. It pauses itself while a student is writing a CBT exam, the school can switch it off at any time and set a daily limit per student, and only the student’s class level and questions are sent to the AI, never their name or personal details.',
+      },
+      {
+        q: 'Can teachers turn old exam papers into typed questions?',
+        a: 'Yes. A teacher photographs a printed or handwritten paper (up to 10 pages) and the AI types it out into sections, questions, options and marks. The teacher checks it next to the photo (anything hard to read is highlighted), then saves it as a written paper or a CBT exam. Any paper can be downloaded as a PDF or an editable Word document.',
+      },
+      {
         q: 'How much does Schola cost?',
         a: `Standard is ${naira(PRICE_PER_STUDENT)} per student, per term, with every feature included (report cards, publishing results, CBT, AI tools, finance, multiple branches). You never pay for more than ${MAX_BILLED_STUDENTS} students, so no school pays more than ${naira(MAX_TERM_BILL)} a term. Schools with fewer than ${MIN_BILLED_STUDENTS} students are billed for ${MIN_BILLED_STUDENTS}.`,
       },

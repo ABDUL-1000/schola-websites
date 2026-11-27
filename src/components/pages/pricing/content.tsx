@@ -44,6 +44,8 @@ const FREE_FEATURES = [
   'Student and staff ID cards, in your design',
   'Certificates: graduation, testimonials, clubs and awards',
   'Admission and appointment letters, emailed as PDF',
+  'Recruitment: 1 open vacancy at a time',
+  'Download papers as PDF or Word',
   'Report cards (with a "free plan" watermark)',
   `${FREE_CBT_EXAMS} CBT exams to try`,
 ]
@@ -57,6 +59,9 @@ const STANDARD_FEATURES = [
   'Certificates for every student, a whole class at once',
   'Unlimited CBT exams',
   'AI lesson notes, lesson plans and exam questions',
+  'Scan exam papers from a photo with AI',
+  'AI Tutor for students',
+  'Unlimited vacancies with CBT tests and interview scoring',
   'Everything in Free',
 ]
 
@@ -198,6 +203,10 @@ const ROWS: Array<[string, string | boolean, string | boolean]> = [
   ['Report card design (layouts, colours, signature, stamp)', false, true],
   ['CBT exams', `${FREE_CBT_EXAMS} to try`, 'Unlimited'],
   ['AI tools (lesson notes, plans, questions)', false, true],
+  ['Scan exam papers from a photo (AI)', false, true],
+  ['AI Tutor for students', false, true],
+  ['Download papers as PDF or Word', true, true],
+  ['Recruitment (job links, CBT tests, interviews)', '1 open vacancy', 'Unlimited'],
   ['Price', '₦0', `${naira(PRICE_PER_STUDENT)} / student / term`],
   ['Most you pay per term', '₦0', `${naira(MAX_TERM_BILL)} (${MAX_BILLED_STUDENTS}+ students)`],
 ]
